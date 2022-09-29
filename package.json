@@ -1,0 +1,25 @@
+{
+  "name": "dominative-solid",
+  "version": "0.0.1-alpha.1",
+  "description": "Custom render and patches for SolidJS to work with DOMiNATIVE",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {},
+  "keywords": [
+    "{N}",
+    "DOM",
+    "DOMiNATIVE",
+    "Solid",
+    "SolidJS",
+    "NativeScript"
+  ],
+  "author": "Yukino Song",
+  "license": "MIT",
+  "repository": "SudoMaker/DOMiNATIVE-Solid",
+  "bugs": "https://github.com/SudoMaker/DOMiNATIVE-Solid/issues",
+  "homepage": "https://github.com/SudoMaker/DOMiNATIVE-Solid",
+  "peerDependencies": {
+    "dominative": "^0.0.5-alpha.0",
+    "solid-js": "^1.5.6"
+  }
+}
