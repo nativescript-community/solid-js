@@ -1,6 +1,6 @@
 {
   "name": "@dominative/solid",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.3",
   "description": "Custom render and patches for SolidJS to work with DOMiNATIVE",
   "main": "src/index.js",
   "type": "module",

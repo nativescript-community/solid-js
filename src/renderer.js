@@ -24,7 +24,9 @@ export const {
 		textNode.nodeValue = value
 	},
 	setProperty(node, name, value) {
-		if (name.startsWith('on:')) node.addEventListener(name.slice(3), value)
+		if (name === 'style') {
+			Object.assign(node.style, value)
+		} else if (name.startsWith('on:')) node.addEventListener(name.slice(3), value)
 		else if (name.startsWith('oncapture:')) node.addEventListener(name.slice(10), value, true)
 		else {
 			if (process.env.NODE_ENV !== 'production' && name.startsWith('on')) console.warn(`[DOMiSOLID] For event handlers, pleas use 'on:eventName' or 'oncapture:eventName'.`)
