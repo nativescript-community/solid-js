@@ -11,10 +11,10 @@
 Via npm:
 
 ```shell
-npm install dominative-solid dominative @utls/undom-ef solid-js
+npm install @dominative/solid dominative undom-ng solid-js
 ```
 
-**Note:** `dominative`, `@utls/undom-ef`, `solid-js` are peer dependencies, you have to install them manually.
+**Note:** `dominative`, `undom-ng`, `solid-js` are peer dependencies, you have to install them manually.
 
 ---
 
@@ -22,7 +22,7 @@ npm install dominative-solid dominative @utls/undom-ef solid-js
 
 ```jsx
 import { Application } from "@nativescript/core"
-import { render } from "dominative-solid"
+import { render } from "@dominative/solid"
 import { createSignal } from "solid-js"
 
 const App = () => {
