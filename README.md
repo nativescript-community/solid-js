@@ -52,6 +52,14 @@ Application.run({ create })
 
 ## Caveats
 
+### Event handling
+
+Use `on:raw-EventName` and `oncapture:RawEvent-Name` to register event handlers instead of `on___`. It may be a little annoying, but NativeScript uses case sensitive event names and don't have native event bubbling, which means delegation couldn't function.
+
+To enable capture and bubble phase of an event, please refer to this [doc](https://github.com/SudoMaker/DOMiNATIVE#tweakabledefineeventoptioneventname-string-option-eventoption)
+
+### Patching `package.json` of `solid-js`
+
 You have to patch the `exports` key in the `package.json` form `node_modules/solid-js`. It is recommended to use [patch-package](https://www.npmjs.com/package/patch-package) for patching.
 
 For example:
