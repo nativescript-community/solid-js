@@ -58,66 +58,17 @@ Use `on:raw-EventName` and `oncapture:RawEvent-Name` to register event handlers 
 
 To enable capture and bubble phase of an event, please refer to this [doc](https://github.com/SudoMaker/DOMiNATIVE#tweakabledefineeventoptioneventname-string-option-eventoption)
 
-### Patching `package.json` of `solid-js`
+### Manually aliasing `solid-js`
 
-You have to patch the `exports` key in the `package.json` form `node_modules/solid-js`. It is recommended to use [patch-package](https://www.npmjs.com/package/patch-package) for patching.
+You have to manually aliasing `solid-js` to the browser version in `webpack.config.js`, otherwise it will use the server version.
 
 For example:
 
-```patch
-diff --git a/node_modules/solid-js/package.json b/node_modules/solid-js/package.json
-index b4c3656..47e362f 100644
---- a/node_modules/solid-js/package.json
-+++ b/node_modules/solid-js/package.json
-@@ -44,48 +44,6 @@
-   ],
-   "exports": {
-     ".": {
--      "browser": {
--        "development": {
--          "import": {
--            "types": "./types/index.d.ts",
--            "default": "./dist/dev.js"
--          },
--          "require": "./dist/dev.cjs"
--        },
--        "import": {
--          "types": "./types/index.d.ts",
--          "default": "./dist/solid.js"
--        },
--        "require": "./dist/solid.cjs"
--      },
--      "deno": {
--        "import": {
--          "types": "./types/index.d.ts",
--          "default": "./dist/server.js"
--        },
--        "require": "./dist/server.cjs"
--      },
--      "worker": {
--        "import": {
--          "types": "./types/index.d.ts",
--          "default": "./dist/server.js"
--        },
--        "require": "./dist/server.cjs"
--      },
--      "node": {
--        "import": {
--          "types": "./types/index.d.ts",
--          "default": "./dist/server.js"
--        },
--        "require": "./dist/server.cjs"
--      },
--      "development": {
--        "import": {
--          "types": "./types/index.d.ts",
--          "default": "./dist/dev.js"
--        },
--        "require": "./dist/dev.cjs"
--      },
-       "import": {
-         "types": "./types/index.d.ts",
-         "default": "./dist/solid.js"
+```js
+// Please keep this order of setting aliases
+config.resolve.alias
+	.set("solid-js/universal", path.resolve(__dirname, `node_modules/solid-js/universal/dist/${env.production ? 'universal' : 'dev'}.js`))
+	.set("solid-js", path.resolve(__dirname, `node_modules/solid-js/dist/${env.production ? 'solid' : 'dev'}.js`))
 ```
 
 ## License
