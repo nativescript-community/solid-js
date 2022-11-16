@@ -1,5 +1,5 @@
-import { aliasTagName, register } from 'dominative'
+import { aliasTagName, globalRegister } from 'dominative'
 
-register(global)
+globalRegister(global)
 
 aliasTagName(tag => tag.toLowerCase())

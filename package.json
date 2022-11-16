@@ -1,6 +1,6 @@
 {
   "name": "@dominative/solid",
-  "version": "0.0.2-alpha.2",
+  "version": "0.0.3-alpha.1",
   "description": "Custom render and patches for SolidJS to work with DOMiNATIVE",
   "main": "src/index.js",
   "type": "module",
@@ -19,7 +19,7 @@
   "bugs": "https://github.com/SudoMaker/DOMiNATIVE-Solid/issues",
   "homepage": "https://github.com/SudoMaker/DOMiNATIVE-Solid",
   "peerDependencies": {
-    "dominative": "^0.0.5-alpha.1",
+    "dominative": "^0.0.7-alpha.2",
     "solid-js": "^1.5.7"
   },
   "publishConfig": {
