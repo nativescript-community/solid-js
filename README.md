@@ -58,19 +58,6 @@ Use `on:raw-EventName` and `oncapture:RawEvent-Name` to register event handlers 
 
 To enable capture and bubble phase of an event, please refer to this [doc](https://github.com/SudoMaker/DOMiNATIVE#tweakabledefineeventoptioneventname-string-option-eventoption)
 
-### Manually aliasing `solid-js`
-
-You have to manually aliasing `solid-js` to the browser version in `webpack.config.js`, otherwise it will use the server version.
-
-For example:
-
-```js
-// Please keep this order of setting aliases
-config.resolve.alias
-	.set("solid-js/universal", path.resolve(__dirname, `node_modules/solid-js/universal/dist/${env.production ? 'universal' : 'dev'}.js`))
-	.set("solid-js", path.resolve(__dirname, `node_modules/solid-js/dist/${env.production ? 'solid' : 'dev'}.js`))
-```
-
 ## License
 
 MIT
