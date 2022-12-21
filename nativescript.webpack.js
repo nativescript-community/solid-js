@@ -43,7 +43,7 @@ const solid = (config, env) => {
         [
           'babel-preset-solid',
           {
-            moduleName: '@nativescript-community/solid',
+            moduleName: '@nativescript-community/solid-js',
             generate: 'universal',
           },
         ],
