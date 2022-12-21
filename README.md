@@ -1,4 +1,4 @@
-# DOMiNATIVE-Solid
+# NativeScript SolidJS
 
 ### **Custom render and patches for SolidJS to work with [DOMiNATIVE](https://github.com/SudoMaker/DOMiNATIVE) on [NativeScript](https://nativescript.org/)**
 
@@ -11,10 +11,10 @@
 Via npm:
 
 ```shell
-npm install @dominative/solid dominative undom-ng solid-js
+npm install @nativescript-commuinty/solid-js dominative undom-ng solid-js
 ```
 
-**Note:** `dominative`, `undom-ng`, `solid-js` are peer dependencies, you have to install them manually.
+**Note:** `dominative`, `undom-ng`, `solid-js` are peer dependencies, you have to install them manually. As the benefit for using peer dependencies, you'll be able to upgrade these dependencies directly from upstream, no need to wait for an update with `@nativescript-commuinty/solid-js`
 
 ---
 
@@ -22,7 +22,7 @@ npm install @dominative/solid dominative undom-ng solid-js
 
 ```jsx
 import { Application } from "@nativescript/core"
-import { render } from "@dominative/solid"
+import { render } from "@nativescript-commuinty/solid-js"
 import { createSignal } from "solid-js"
 
 const App = () => {

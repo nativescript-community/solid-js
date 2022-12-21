@@ -1,7 +1,7 @@
 {
-  "name": "@dominative/solid",
+  "name": "@nativescript-community/solid-js",
   "version": "0.0.4-alpha.1",
-  "description": "Custom render and patches for SolidJS to work with DOMiNATIVE",
+  "description": "SolidJS to work with NativeScript",
   "main": "src/index.js",
   "scripts": {},
   "keywords": [
@@ -10,16 +10,17 @@
     "DOMiNATIVE",
     "Solid",
     "SolidJS",
-    "NativeScript"
+    "NativeScript",
+    "native"
   ],
   "author": "Yukino Song",
   "license": "MIT",
-  "repository": "SudoMaker/DOMiNATIVE-Solid",
-  "bugs": "https://github.com/SudoMaker/DOMiNATIVE-Solid/issues",
-  "homepage": "https://github.com/SudoMaker/DOMiNATIVE-Solid",
+  "repository": "nativescript-community/solid-js",
+  "bugs": "https://github.com/nativescript-community/solid-js/issues",
+  "homepage": "https://github.com/nativescript-community/solid-js",
   "peerDependencies": {
     "dominative": "^0.0.7-alpha.2",
-    "solid-js": "^1.5.7"
+    "solid-js": "^1.6.6"
   },
   "publishConfig": {
     "access": "public"
