@@ -40,7 +40,7 @@ const App = () => {
 }
 
 const create = () => {
-	render(App, document.documentElement)
+	render(App, document.body)
 	return document
 }
 
