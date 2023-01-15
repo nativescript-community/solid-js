@@ -24,6 +24,10 @@ const solid = (config, env) => {
       path.resolve(solidPath, `universal/dist/${env.production ? 'universal' : 'dev'}.js`)
     )
     .set(
+      'solid-js/store',
+      path.resolve(solidPath, `store/dist/${env.production ? 'store' : 'dev'}.js`)
+    )
+    .set(
       'solid-js',
       path.resolve(solidPath, `dist/${env.production ? 'solid' : 'dev'}.js`)
     );
