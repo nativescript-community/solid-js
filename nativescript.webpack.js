@@ -51,6 +51,7 @@ const solid = (config, env) => {
             generate: 'universal',
           },
         ],
+        "@babel/typescript"
       ],
       env: {
         development: {

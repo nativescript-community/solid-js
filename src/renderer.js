@@ -70,6 +70,10 @@ export const {
 	}
 });
 
+export function use(fn, args) {
+	return fn?.(args);
+}
+
 // Forward Solid control flow
 export {
 	For,

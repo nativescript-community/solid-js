@@ -3,6 +3,7 @@
   "version": "0.0.4-alpha.2",
   "description": "SolidJS to work with NativeScript",
   "main": "src/index.js",
+  "types": "index.d.ts",
   "scripts": {},
   "keywords": [
     "{N}",
@@ -20,7 +21,8 @@
   "homepage": "https://github.com/nativescript-community/solid-js",
   "peerDependencies": {
     "dominative": "^0.0.7-alpha.2",
-    "solid-js": "^1.6.6"
+    "solid-js": "^1.6.6",
+    "@babel/preset-typescript": "7.18.6"
   },
   "publishConfig": {
     "access": "public"
