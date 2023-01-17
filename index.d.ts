@@ -6,7 +6,7 @@ import {
   Node,
   NSComponentsMap,
   NSCustomComponentsMap,
-  PseudoElementsMap
+  PseudoElementsMap,
 } from "dominative";
 import { JSX as SolidJSX } from "solid-js";
 
@@ -40,12 +40,12 @@ export type MapNativeViewEvents<T, C> = {
   [K in T as `on:${K}`]: (event: DOMEvent<C>) => void;
 };
 
-export type MapPseudoElementEvents<T, C> = {
+export type MapPseudoElementEvents<T> = {
   [K in T as `on:${K}`]: (event: {
     view?: ViewBase;
     index?: number;
     item?: any;
-    data?: any
+    data?: any;
   }) => void;
 };
 
@@ -60,10 +60,7 @@ type NSComponentEventsMap = {
     NSCustomComponentsMap[K]
   >;
 } & {
-  [K in keyof Pick<PseudoElementsMap, "ItemTemplate">]: MapPseudoElementEvents<
-    "createView" | "itemLoading",
-    PseudoElementsMap[K]
-  >;
+  ItemTemplate: MapPseudoElementEvents<"createView" | "itemLoading">;
 } & {
   [K in keyof Omit<PseudoElementsMap, "ItemTemplate">]: {};
 };
