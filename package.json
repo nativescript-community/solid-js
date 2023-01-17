@@ -20,8 +20,8 @@
   "bugs": "https://github.com/nativescript-community/solid-js/issues",
   "homepage": "https://github.com/nativescript-community/solid-js",
   "peerDependencies": {
-    "dominative": "^0.0.7-alpha.2",
-    "solid-js": "^1.6.6",
+    "dominative": "^0.0.7-alpha.5",
+    "solid-js": "^1.6.9",
     "@babel/preset-typescript": "7.18.6"
   },
   "publishConfig": {
