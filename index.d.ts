@@ -6,6 +6,7 @@ import {
   Node,
   NSComponentsMap,
   NSCustomComponentsMap,
+  PseudoElementsMap
 } from "dominative";
 import { JSX as SolidJSX } from "solid-js";
 
@@ -28,7 +29,7 @@ import { JSX as SolidJSX } from "solid-js";
  * Read more about the render function here:
  * @link https://www.solidjs.com/docs/latest#render
  */
-export function render(app: () => JSX.Element, root: Node):void;
+export function render(app: () => JSX.Element, root: Node): void;
 
 export type Filter<
   Set,
@@ -37,6 +38,10 @@ export type Filter<
 
 export type MapNativeViewEvents<T, C> = {
   [K in T as `on:${K}`]: (event: DOMEvent<C>) => void;
+};
+
+export type MapPseudoElementEvents<T, C> = {
+  [K in T as `on:${K}`]: (event: any) => void;
 };
 
 type NSComponentEventsMap = {
@@ -49,6 +54,13 @@ type NSComponentEventsMap = {
     NSCustomComponentsMap[K]["eventNames"],
     NSCustomComponentsMap[K]
   >;
+} & {
+  [K in keyof Pick<PseudoElementsMap, "ItemTemplate">]: MapPseudoElementEvents<
+    "createView" | "itemLoading",
+    PseudoElementsMap[K]
+  >;
+} & {
+  [K in keyof Omit<PseudoElementsMap, "ItemTemplate">]: {};
 };
 
 export type IgnoredKeys =
@@ -196,7 +208,7 @@ declare global {
     interface CustomCaptureEvents {}
 
     type JSXElementAttributes<K> = SolidJSX.CustomAttributes<
-        NSComponentsMap[K]
+      NSComponentsMap[K]
     > &
       Partial<
         DefineNSComponent<HTMLElementTagNameMap[K], NSComponentEventsMap[K]> &
