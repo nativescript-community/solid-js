@@ -1,4 +1,4 @@
-import { Style } from "@nativescript/core";
+import { Style, ViewBase } from "@nativescript/core";
 import {
   Document,
   DOMEvent,
@@ -41,7 +41,12 @@ export type MapNativeViewEvents<T, C> = {
 };
 
 export type MapPseudoElementEvents<T, C> = {
-  [K in T as `on:${K}`]: (event: any) => void;
+  [K in T as `on:${K}`]: (event: {
+    view?: ViewBase;
+    index?: number;
+    item?: any;
+    data?: any
+  }) => void;
 };
 
 type NSComponentEventsMap = {
