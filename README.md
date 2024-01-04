@@ -11,7 +11,7 @@
 Via npm:
 
 ```shell
-npm install @nativescript-community/solid-js dominative undom-ng solid-js
+npm install @nativescript-community/solid-js dominative undom-ng solid-js @babel/preset-typescript babel-preset-solid
 ```
 
 **Note:** `dominative`, `undom-ng`, `solid-js` are peer dependencies, you have to install them manually. As the benefit for using peer dependencies, you'll be able to upgrade these dependencies directly from upstream, no need to wait for an update with `@nativescript-community/solid-js`
@@ -24,6 +24,8 @@ npm install @nativescript-community/solid-js dominative undom-ng solid-js
 import { Application } from "@nativescript/core"
 import { render } from "@nativescript-community/solid-js"
 import { createSignal } from "solid-js"
+
+document.body.actionBarHidden = false
 
 const App = () => {
 	const [count, setCount] = createSignal(0)
