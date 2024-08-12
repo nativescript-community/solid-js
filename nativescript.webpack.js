@@ -30,6 +30,10 @@ const solid = (config, env) => {
     .set(
       'solid-js',
       path.resolve(solidPath, `dist/${env.production ? 'solid' : 'dev'}.js`)
+    )
+    .set(
+      'solid-js/web',
+      path.resolve(solidPath, `dist/${env.production ? 'web' : 'dev'}.js`)
     );
 
   config.module
