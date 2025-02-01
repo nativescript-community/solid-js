@@ -24,7 +24,7 @@
     "@babel/plugin-proposal-decorators": "^7.25.9"
   },
   "peerDependencies": {
-    "@babel/preset-typescript": "7.23.3",
+    "@babel/preset-typescript": "^7.23.3",
     "babel-preset-solid": "^1.8.9",
     "dominative": "^0.1.2",
     "solid-js": "^1.8.11"
