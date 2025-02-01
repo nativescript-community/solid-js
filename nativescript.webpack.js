@@ -57,6 +57,11 @@ const solid = (config, env) => {
         ],
         "@babel/typescript"
       ],
+      plugins: [
+        path.resolve(__dirname, 'babel-plugin-native-class.js'),
+        ['@babel/plugin-proposal-decorators', { legacy: true }],
+        ['@babel/plugin-proposal-class-properties', { loose: true }]
+      ],
       env: {
         development: {
           plugins: [['solid-refresh/babel', { bundler: 'webpack5' }]],
