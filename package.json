@@ -1,6 +1,6 @@
 {
   "name": "@nativescript-community/solid-js",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "SolidJS to work with NativeScript",
   "main": "src/index.js",
   "types": "index.d.ts",
