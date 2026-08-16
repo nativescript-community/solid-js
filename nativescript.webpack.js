@@ -3,10 +3,36 @@ const {
   getPlatformName,
 } = require('@nativescript/webpack/dist/helpers/platform');
 
+// Solid 2 publishes an exports map whose `node` condition points at the SSR
+// build. Resolving through it leaves the app with a renderer that never applies
+// updates, so every entry point is pinned to an explicit browser bundle. `$`
+// keeps each alias exact so subpaths still resolve normally.
+const solidAliases = (production) => {
+  const solidDist = path.join(
+    path.dirname(require.resolve('solid-js/package.json')),
+    'dist'
+  );
+  const signalsDist = path.join(
+    path.dirname(require.resolve('@solidjs/signals/package.json')),
+    'dist'
+  );
+  const universalDist = path.dirname(require.resolve('@solidjs/universal'));
+
+  return {
+    'solid-js$': path.join(solidDist, production ? 'solid.js' : 'dev.js'),
+    '@solidjs/signals$': path.join(
+      signalsDist,
+      production ? 'prod/index.js' : 'dev.js'
+    ),
+    '@solidjs/universal$': path.join(
+      universalDist,
+      production ? 'universal.js' : 'dev.js'
+    ),
+  };
+};
+
 const solid = (config, env) => {
   const platform = getPlatformName();
-
-  const solidPath = path.resolve(require.resolve("solid-js"), "../..");
 
   config.resolve.extensions
     .prepend('.js')
@@ -18,23 +44,10 @@ const solid = (config, env) => {
     .prepend(`.${platform}.jsx`)
     .prepend(`.${platform}.tsx`);
 
-  config.resolve.alias
-    .set(
-      'solid-js/universal',
-      path.resolve(solidPath, `universal/dist/${env.production ? 'universal' : 'dev'}.js`)
-    )
-    .set(
-      'solid-js/store',
-      path.resolve(solidPath, `store/dist/${env.production ? 'store' : 'dev'}.js`)
-    )
-    .set(
-      'solid-js',
-      path.resolve(solidPath, `dist/${env.production ? 'solid' : 'dev'}.js`)
-    )
-    .set(
-      'solid-js/web',
-      path.resolve(solidPath, `dist/${env.production ? 'web' : 'dev'}.js`)
-    );
+  const aliases = solidAliases(env.production);
+  for (const [key, value] of Object.entries(aliases)) {
+    config.resolve.alias.set(key, value);
+  }
 
   config.module
     .rule('bundle-source')
@@ -62,11 +75,6 @@ const solid = (config, env) => {
         ['@babel/plugin-proposal-decorators', { legacy: true }],
         ['@babel/plugin-proposal-class-properties', { loose: true }]
       ],
-      env: {
-        development: {
-          plugins: [['solid-refresh/babel', { bundler: 'webpack5' }]],
-        },
-      },
     });
 
   if (!env.production) {
@@ -77,4 +85,3 @@ const solid = (config, env) => {
 };
 
 module.exports = webpack => webpack.chainWebpack(solid);
-

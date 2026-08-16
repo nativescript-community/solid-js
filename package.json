@@ -1,6 +1,6 @@
 {
   "name": "@nativescript-community/solid-js",
-  "version": "0.1.2",
+  "version": "2.0.0-rc.0",
   "description": "SolidJS to work with NativeScript",
   "main": "src/index.js",
   "types": "index.d.ts",
@@ -25,9 +25,10 @@
   },
   "peerDependencies": {
     "@babel/preset-typescript": "^7.23.3",
-    "babel-preset-solid": "^1.8.9",
+    "@solidjs/universal": "^2.0.0-rc.0",
+    "babel-preset-solid": "^2.0.0-rc.0",
     "dominative": "^0.1.2",
-    "solid-js": "^1.8.11"
+    "solid-js": "^2.0.0-rc.0"
   },
   "publishConfig": {
     "access": "public"
