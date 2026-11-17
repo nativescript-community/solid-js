@@ -19,14 +19,14 @@ const solidAliases = (production) => {
   const universalDist = path.dirname(require.resolve('@solidjs/universal'));
 
   return {
-    'solid-js$': path.join(solidDist, production ? 'solid.js' : 'dev.js'),
+    'solid-js$': path.join(solidDist, production ? 'solid.js' : 'solid.dev.js'),
     '@solidjs/signals$': path.join(
       signalsDist,
       production ? 'prod/index.js' : 'dev.js'
     ),
     '@solidjs/universal$': path.join(
       universalDist,
-      production ? 'universal.js' : 'dev.js'
+      production ? 'universal.js' : 'universal.dev.js'
     ),
   };
 };
@@ -60,20 +60,19 @@ const solid = (config, env) => {
     .options({
       babelrc: false,
       configFile: false,
-      presets: [
-        [
-          'babel-preset-solid',
-          {
-            moduleName: '@nativescript-community/solid-js',
-            generate: 'universal',
-          },
-        ],
-        "@babel/typescript"
-      ],
+      presets: ['@babel/typescript'],
       plugins: [
         path.resolve(__dirname, 'babel-plugin-native-class.js'),
         ['@babel/plugin-proposal-decorators', { legacy: true }],
-        ['@babel/plugin-proposal-class-properties', { loose: true }]
+        ['@babel/plugin-proposal-class-properties', { loose: true }],
+        [
+          '@solidjs/babel-plugin',
+          {
+            moduleName: '@nativescript-community/solid-js',
+            generate: 'universal',
+            hydratable: false,
+          },
+        ],
       ],
     });
 

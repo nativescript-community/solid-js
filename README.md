@@ -9,10 +9,10 @@
 Via npm:
 
 ```shell
-npm install @nativescript-community/solid-js dominative undom-ng solid-js @solidjs/universal @babel/preset-typescript babel-preset-solid
+npm install @nativescript-community/solid-js dominative undom-ng solid-js @solidjs/universal @babel/preset-typescript @solidjs/babel-plugin
 ```
 
-**Note:** `dominative`, `undom-ng`, `solid-js`, `@solidjs/universal` are peer dependencies, you have to install them manually. As the benefit for using peer dependencies, you'll be able to upgrade these dependencies directly from upstream, no need to wait for an update with `@nativescript-community/solid-js`
+**Note:** `dominative`, `undom-ng`, `solid-js`, `@solidjs/universal`, `@solidjs/babel-plugin` are peer dependencies, you have to install them manually. As the benefit for using peer dependencies, you'll be able to upgrade these dependencies directly from upstream, no need to wait for an update with `@nativescript-community/solid-js`
 
 | `@nativescript-community/solid-js` | `solid-js`  |
 | ---------------------------------- | ----------- |
@@ -78,6 +78,7 @@ Application.run({ create })
 Solid 2 is a rewrite; [its cheatsheet](https://github.com/solidjs/solid/blob/main/packages/solid/CHEATSHEET.md) and [migration guide](https://github.com/solidjs/solid/blob/main/documentation/solid-2.0/MIGRATION.md) cover the reactive changes (two-argument `createEffect`, draft-first store setters, deferred reads until flush). What changes for a NativeScript app specifically:
 
 - `solid-js/store` merged into `solid-js`, and `solid-js/universal` moved to `@solidjs/universal` — install it alongside `solid-js`.
+- `babel-preset-solid` is replaced by `@solidjs/babel-plugin`, which the webpack config registers as a Babel plugin. Swap the dependency.
 - Control flow re-exported from this package is now `For`, `Repeat`, `Show`, `Switch`, `Match`, `Loading`, `Reveal`, `Errored`. `Suspense` → `Loading`, `SuspenseList` → `Reveal`, `ErrorBoundary` → `Errored`, and `<Index>` → `<For keyed={false}>`.
 - `onMount` is gone; use `onSettled`, which takes the teardown as its return value.
 - `use:` directives are gone (this package no longer exports `use`). A directive is now a ref: `ref={myDirective(options)}`, and refs compose as arrays.
