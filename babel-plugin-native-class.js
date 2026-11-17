@@ -1,4 +1,3 @@
-const ts = require('typescript');
 const parser = require('@babel/parser');
 
 module.exports = function () {
@@ -53,6 +52,8 @@ function transpileClassToES5(node, sourceCode) {
   const classCode = sourceCode.slice(classStart, classEnd);
   const cleanedCode = removeNativeClassDecorator(classCode, className);
 
+  // Loaded on first use: JavaScript-only projects don't install typescript.
+  const ts = require('typescript');
   const transpiled = ts.transpileModule(cleanedCode, {
     compilerOptions: {
       noEmitHelpers: true,
